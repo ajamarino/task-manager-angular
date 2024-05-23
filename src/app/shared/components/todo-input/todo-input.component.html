@@ -1,5 +1,5 @@
 
 <mat-form-field class="todo-input" appearance="outline">
-  <mat-label>Email</mat-label>
-  <input matInput placeholder="email@email.com">
+  <mat-label>{{ input.label }}</mat-label>
+  <input matInput [placeholder]="input.placeholder" [value]="input.value" (input)="onInputChange($event)">
 </mat-form-field>

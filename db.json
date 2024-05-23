@@ -13,5 +13,11 @@
     "label": 1,
     "priority":3
   }
+],
+  "users": [{
+    "id":1,
+    "email": "admin@todo.com",
+    "password": "12345678"
+  }
 ]
 }

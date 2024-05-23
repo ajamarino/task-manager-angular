@@ -3,13 +3,14 @@
 
   </div>
   <div class="login-form">
-    <div class="form-container">
+    <form class="form-container" (ngSubmit)="login()">
       <h1>Bem vindo ao seu Task Manager</h1>
-      <app-todo-input class="flex"></app-todo-input>
-      <app-todo-password class="flex"></app-todo-password>
-      <button mat-raised-button color="primary" class="login-button" routerLink="/home">Entrar</button>
+      <app-todo-input [input]="emailInput" (valueChange)="onEmailInputChange($event)" class="flex"></app-todo-input>
+      <app-todo-password (valueChange)="onPasswordInputChange($event)" class="flex"></app-todo-password>
+      <span *ngIf="error" class="auth-error">{{error}}</span>
+      <button mat-raised-button color="primary" class="login-button" type="submit">Entrar</button>
       <button mat-button color="primary">Esqueceu sua senha?</button>
-      <button mat-button color="accent">Criar usuário</button>
-    </div>
+      <button mat-button color="error" class="create-button">Ainda não tem uma conta? Crie seu usuário</button>
+    </form>
   </div>
 </div>

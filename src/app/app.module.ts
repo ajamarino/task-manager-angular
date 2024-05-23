@@ -25,6 +25,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import { FormControl, FormsModule } from '@angular/forms';
+import { AuthService } from './core/services/auth.service';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 
 
@@ -41,6 +44,7 @@ import {MatRadioModule} from '@angular/material/radio';
     HeaderComponent,
     TaskCardComponent,
     NewTaskComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -56,11 +60,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [
-
   ],
   bootstrap: [AppComponent]
 })

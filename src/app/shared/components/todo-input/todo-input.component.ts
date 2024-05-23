@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IInput } from '../../interfaces/IInput';
 
 @Component({
   selector: 'app-todo-input',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoInputComponent implements OnInit {
 
-  constructor() { }
+  @Input() input!: IInput;
+
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit() {
+  }
+
+  onInputChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.valueChange.emit(inputElement.value)
   }
 
 }
