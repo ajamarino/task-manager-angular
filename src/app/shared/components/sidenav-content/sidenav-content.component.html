@@ -1,9 +1,17 @@
-<h1>Task Manager</h1>
+<div class="sidenav-content-container">
+  <div>
+    <h1 class="title">Task Manager</h1>
 
-<div>
-  <div *ngFor="let item of sidenavPages" class="nav-item">
-    <mat-icon>{{item.icon}}</mat-icon>
-    <h2><a [routerLink]=item.route>{{item.desc}}</a></h2>
-
+    <div class="nav-items">
+      <div *ngFor="let item of sidenavPages" class="nav-item">
+        <mat-icon>{{item.icon}}</mat-icon>
+        <h2><a [routerLink]=item.route>{{item.desc}}</a></h2>
+      </div>
+    </div>
   </div>
+  <div class="nav-item">
+    <mat-icon>logout</mat-icon>
+    <h2><a routerLink="/login">Logout</a></h2>
+  </div>
+
 </div>

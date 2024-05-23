@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ITask } from '../../interfaces/ITask';
 
 @Component({
   selector: 'app-task-card',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-card.component.sass']
 })
 export class TaskCardComponent {
+
+  @Input() task!:ITask;
 
 }

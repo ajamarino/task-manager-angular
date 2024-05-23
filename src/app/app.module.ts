@@ -26,9 +26,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormControl, FormsModule } from '@angular/forms';
-import { AuthService } from './core/services/auth.service';
+import { AuthService } from './core/services/auth/auth.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -62,7 +62,8 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
     MatSelectModule,
     MatRadioModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
 
   ],
   providers: [

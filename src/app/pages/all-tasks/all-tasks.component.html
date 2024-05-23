@@ -1,2 +1,11 @@
 <app-header></app-header>
-<app-task-card></app-task-card>
+
+<div *ngIf="tasks" >
+  <div *ngFor="let task of tasks">
+    <app-task-card [task]="task"></app-task-card>
+  </div>
+</div>
+
+<div *ngIf="tasks === []">
+  Não há tarefas criadas
+</div>

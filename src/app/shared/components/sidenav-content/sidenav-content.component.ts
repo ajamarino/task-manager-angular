@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class SidenavContentComponent {
 
-  sidenavPages = [{desc: 'All Tasks', route: 'all-tasks', icon: 'home'}, {desc: 'Today', route: 'today', icon: 'calendar'}]
+  sidenavPages = [{desc: 'All Tasks', route: 'all-tasks', icon: 'home'}, {desc: 'Today', route: 'today', icon: 'today'}]
 }

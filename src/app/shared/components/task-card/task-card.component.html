@@ -1,11 +1,17 @@
 <mat-card class="task-card">
-  <div>
-    <mat-card-content>Task #1</mat-card-content>
-    <mat-card-content class="card-date">Date</mat-card-content>
-    <mat-card-content class="card-priority">Priority </mat-card-content>
-    <mat-card-content>Label</mat-card-content>
+  <div class="checkbox-task">
+    <mat-checkbox></mat-checkbox>
+
+    <div class="card-content">
+      <div class="f-row">
+        <p class="card-desc">{{task.description}}</p>
+        <p class="card-date">{{task.limitDate}}</p>
+      </div>
+      <p class="card-priority">{{task.priority}} </p>
+      <p>{{task.label}}</p>
+    </div>
   </div>
-  <div>
+    <div>
     <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
       <mat-icon>edit</mat-icon>
     </button>
