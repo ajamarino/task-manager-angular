@@ -3,13 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AllTasksComponent } from './pages/all-tasks/all-tasks.component';
+import { TodayComponent } from './pages/today/today.component';
+import { NewTaskComponent } from './pages/new-task/new-task.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, children: [
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'all-tasks', pathMatch: 'full' },
     { path: 'all-tasks', component: AllTasksComponent },
-    // { path: 'today', component: SettingsComponent }
+    { path: 'today', component: TodayComponent },
+    { path: 'new-task', component: NewTaskComponent },
   ] },
   { path: 'login', component: LoginComponent }
 ];
