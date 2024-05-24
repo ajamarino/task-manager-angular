@@ -16,6 +16,10 @@ export class TasksService {
     return this.http.get<ITask[]>(this.url);
   }
 
+  getTaskById(id:string | null):Observable<ITask[]>{
+    return this.http.get<ITask[]>(`${this.url}?id=${id}`)
+  }
+
   createTask(task: ITask): Observable<ITask> {
     return this.http.post<ITask>(this.url, task)
   }

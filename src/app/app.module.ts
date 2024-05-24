@@ -25,7 +25,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './core/services/auth/auth.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -65,8 +65,8 @@ import { EditTaskComponent } from './pages/edit-task/edit-task.component';
     MatRadioModule,
     FormsModule,
     HttpClientModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }

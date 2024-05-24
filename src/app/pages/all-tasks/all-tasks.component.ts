@@ -24,25 +24,36 @@ export class AllTasksComponent implements OnInit {
     this.getAllTasks()
   }
 
-  getAllTasks(){
+  getAllTasks() {
     this.tasksService.getTasks().subscribe({
-      next: (tasks) =>{
-        this.tasks = tasks
+      next: (tasks) => {
+        this.tasks = tasks.sort((a, b) => {
+          // Primeiro, se ambos têm o mesmo valor de isActive, ordene por limitDate de forma decrescente
+          if (a.isActive === b.isActive) {
+            return new Date(a.limitDate).getTime() - new Date(b.limitDate).getTime();
+          }
+          // Se isActive é diferente, coloque os ativos (isActive = true) primeiro
+          return a.isActive ? 1 : -1;
+        });
       },
       error: (err) => {
         console.error('Error fetching tasks:', err);
       }
-    })
+    });
   }
 
   receiveUptadedTask(event:ITask){
-    this.tasksService.updateTask(event).subscribe()
-    this.getAllTasks()
+    this.tasksService.updateTask(event).subscribe({
+      next: update => {
+        this.getAllTasks()
+      }
+    })
   }
 
   editTask(event:string){
-    this.sharedService.emitTaskId(event);
-    this.router.navigate(["/home/edit-task"])
+    // this.sharedService.emitTaskId(event);
+    // this.router.navigate(["/home/edit-task"])
+    console.log(this.tasks)
   }
 
   deleteTask(event:string){

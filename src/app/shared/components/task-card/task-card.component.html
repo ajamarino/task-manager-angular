@@ -1,17 +1,17 @@
-<mat-card class="task-card">
+<mat-card [ngClass]="{'task-card': !task.isActive, 'task-card-done': task.isActive}">
   <div class="checkbox-task">
     <mat-checkbox [(ngModel)]="task.isActive" color="primary" (click)="sendTask()"></mat-checkbox>
 
     <div class="card-content">
       <div class="f-row">
         <p class="card-desc">{{task.description}}</p>
-        <p class="card-date">{{task.limitDate}}</p>
+        <p *ngIf="task.limitDate" class="card-date">{{task.limitDate | date: 'dd/MM/yyyy'}}</p>
       </div>
-      <p class="card-priority">{{priority}} </p>
-      <p>{{task.label}}</p>
+      <p *ngIf="priority" class="card-priority">Prioridade: {{priority}} </p>
+      <p *ngIf="label">Categoria: {{label}}</p>
     </div>
   </div>
-    <div>
+    <div class="action-buttons">
     <button (click)="emitEdit()" mat-icon-button aria-label="Pencil">
       <mat-icon>edit</mat-icon>
     </button>

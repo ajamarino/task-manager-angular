@@ -60,7 +60,7 @@ export class NewTaskComponent {
           limitDate: this.limitDate ? this.limitDate.toDateString() : "",
           priority: this.priority,
           label: this.label,
-          isActive: true
+          isActive: false
         };
         return this.tasksService.createTask(taskPayload);
       })

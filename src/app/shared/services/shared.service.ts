@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  private taskIdSource = new Subject<string>();
+  private taskIdSource = new BehaviorSubject<string | null>(null);
   taskId$ = this.taskIdSource.asObservable();
 
   emitTaskId(taskId: string) {
