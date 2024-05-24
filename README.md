@@ -1,27 +1,43 @@
-# TaskManagerApp
+# Projeto de Gestão de Tarefas
+## Este projeto é uma aplicação de gestão de tarefas desenvolvida com Angular e um backend simulado utilizando JSON Server.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+### Inicialização do Projeto
+Siga as instruções abaixo para inicializar o projeto localmente.
 
-## Development server
+1. Clonar o Repositório
+bash
+`git clone https://github.com/seu-usuario/seu-projeto.git`
+`cd seu-projeto`
+2. Instalar Dependências
+Certifique-se de ter o Node.js instalado. Em seguida, execute o seguinte comando:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+bash
+`npm install`
+3. Inicializar o JSON Server
+O backend da aplicação é simulado usando JSON Server. Siga as etapas abaixo para inicializá-lo:
 
-## Code scaffolding
+bash
+`json-server --watch db.json`
+Isso iniciará o JSON Server usando o arquivo db.json como banco de dados simulado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. Inicializar a Aplicação Angular
+Em outra janela do terminal, execute o seguinte comando para inicializar a aplicação Angular:
 
-## Build
+bash
+`ng serve`
+Isso iniciará a aplicação Angular localmente. Navegue para `http://localhost:4200/`para visualizá-la no navegador.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Testes unitários
+Para rodar a cobertura de testes unitários, basta executar o terminal e rodar o seguinte comando:
+bash
+`ng test`
 
-## Running unit tests
+### Credenciais de Login
+Para acessar a aplicação, utilize as seguintes credenciais:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Usuário: admin@todo.com
+Senha: 12345678
 
-## Running end-to-end tests
+## Contato
+Se tiver alguma dúvida ou precisar de suporte adicional, entre em contato pelo e-mail: alefejamarino@gmail.com
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
