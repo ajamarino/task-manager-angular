@@ -8,7 +8,7 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, children: [
     { path: '', redirectTo: 'all-tasks', pathMatch: 'full' },
     { path: 'all-tasks', component: AllTasksComponent },
