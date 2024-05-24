@@ -89,7 +89,7 @@ export class EditTaskComponent {
     };
 
     return this.tasksService.updateTask(taskPayload).subscribe({
-      next: res =>{
+      next: () =>{
         this.router.navigate(["home/all-tasks"])
       },
       error: err => console.log(err)

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoPasswordComponent } from './todo-password.component';
+import { AppModule } from 'src/app/app.module';
 
 describe('TodoPasswordComponent', () => {
   let component: TodoPasswordComponent;
@@ -8,7 +9,8 @@ describe('TodoPasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoPasswordComponent ]
+      declarations: [ TodoPasswordComponent ],
+      imports: [AppModule]
     })
     .compileComponents();
 

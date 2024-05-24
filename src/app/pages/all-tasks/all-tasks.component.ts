@@ -51,9 +51,9 @@ export class AllTasksComponent implements OnInit {
   }
 
   editTask(event:string){
-    // this.sharedService.emitTaskId(event);
-    // this.router.navigate(["/home/edit-task"])
-    console.log(this.tasks)
+    this.sharedService.emitTaskId(event);
+    this.router.navigate(["/home/edit-task"])
+
   }
 
   deleteTask(event:string){

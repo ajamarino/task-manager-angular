@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidenavContentComponent } from './sidenav-content.component';
+import { AppModule } from 'src/app/app.module';
 
 describe('SidenavContentComponent', () => {
   let component: SidenavContentComponent;
@@ -8,7 +9,8 @@ describe('SidenavContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidenavContentComponent ]
+      declarations: [ SidenavContentComponent ],
+      imports: [AppModule]
     })
     .compileComponents();
 
