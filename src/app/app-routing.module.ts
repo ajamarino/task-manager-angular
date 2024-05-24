@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AllTasksComponent } from './pages/all-tasks/all-tasks.component';
 import { TodayComponent } from './pages/today/today.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,6 +14,8 @@ const routes: Routes = [
     { path: 'all-tasks', component: AllTasksComponent },
     { path: 'today', component: TodayComponent },
     { path: 'new-task', component: NewTaskComponent },
+    { path: 'edit-task', component: EditTaskComponent },
+
   ] },
   { path: 'login', component: LoginComponent }
 ];

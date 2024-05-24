@@ -29,6 +29,7 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { AuthService } from './core/services/auth/auth.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HeaderComponent,
     TaskCardComponent,
     NewTaskComponent,
+    EditTaskComponent,
 
   ],
   imports: [
