@@ -1,29 +1,47 @@
 <div>
-  <app-header></app-header>
-  <form class="task-handler">
-    <app-todo-input></app-todo-input>
+  <app-header [header]="header"></app-header>
+  <form class="task-handler" (ngSubmit)="createTask()">
+    <h3 class="input-label">Descrição da tarefa:</h3>
+    <app-todo-input
+      [input]="descriptionInput"
+      (valueChange)="onDescInputChange($event)"
+      class="flex"
+    ></app-todo-input>
+    <h3 class="input-label">Date limite:</h3>
     <mat-form-field appearance="outline">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-label>Data Limite</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="limitDate"
+        name="limitDate"
+      />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <h3 class="input-label">Categoria:</h3>
     <mat-form-field appearance="outline">
-      <mat-label>Label</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let food of foods" [value]="food.value">
-          {{food.viewValue}}
+      <mat-label>Categoria</mat-label>
+      <mat-select [(value)]="label">
+        <mat-option *ngFor="let label of labels" [value]="label.value">
+          {{ label.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-radio-group
-  aria-labelledby="example-radio-group-label"
-  class="example-radio-group">
-  <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-    {{season}}
-  </mat-radio-button>
-</mat-radio-group>
-  <button mat-raised-button>Criar</button>
+    <h3 class="input-label">Prioridade:</h3>
+    <mat-radio-group [(ngModel)]="priority" name="priority" aria-labelledby="radio-group-priority" class="radio-group" color="primary">
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let priority of priorities"
+        [value]="priority.value"
+      >
+        {{ priority.viewValue }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button color="primary" type="submit">Criar</button>
   </form>
 </div>

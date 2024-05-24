@@ -1,5 +1,5 @@
 <div class="header-container">
 
-  <h1>Home</h1>
-  <button mat-raised-button routerLink="../new-task"><mat-icon fontIcon="add"></mat-icon>Nova Tarefa</button>
+  <h1 class="header-title">{{header.title}}</h1>
+  <button *ngIf="header.hasButton" mat-raised-button routerLink="../new-task"><mat-icon fontIcon="add"></mat-icon>Nova Tarefa</button>
 </div>

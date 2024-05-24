@@ -1,25 +1,53 @@
 {
-  "tasks": [{
-    "id": 1,
-    "description": "Ir ao mercado",
-    "limitDate": "24/05/2024",
-    "label": 1,
-    "priority":3,
-    "isActive":false
-  },
-  {
-    "id": 1,
-    "description": "Ir ao mercado",
-    "limitDate": "24/05/2024",
-    "label": 1,
-    "priority":3,
-    "isActive":true
-  }
-],
-  "users": [{
-    "id":1,
-    "email": "admin@todo.com",
-    "password": "12345678"
-  }
-]
+  "tasks": [
+    {
+      "id": 0,
+      "description": "Ir ao mercado",
+      "limitDate": "24/05/2024",
+      "label": 1,
+      "priority": 3,
+      "isActive": false
+    },
+    {
+      "id": 1,
+      "description": "Ir ao mercado",
+      "limitDate": "24/05/2024",
+      "label": 1,
+      "priority": 3,
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "description": "Trabalho",
+      "limitDate": "Fri May 24 2024",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "description": "GO to the mall",
+      "limitDate": "Thu May 09 2024",
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "description": "Academia",
+      "limitDate": "Thu May 16 2024",
+      "priority": 1,
+      "label": 3,
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "description": "dsfdsfsdf",
+      "limitDate": "Thu May 16 2024",
+      "isActive": true
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@todo.com",
+      "password": "12345678"
+    }
+  ]
 }

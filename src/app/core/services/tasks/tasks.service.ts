@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { ITask } from 'src/app/shared/interfaces/ITask';
 
 @Injectable({
@@ -14,5 +14,34 @@ export class TasksService {
 
   getTasks(): Observable<ITask[]>{
     return this.http.get<ITask[]>(this.url);
+  }
+
+  createTask(task: ITask): Observable<ITask> {
+    return this.http.post<ITask>(this.url, task)
+  }
+
+  updateTask(task: ITask): Observable<ITask> {
+    const url = `${this.url}/${task.id}`;
+    return this.http.put<ITask>(url, task);
+  }
+
+  deleteTask(id: number): Observable<void> {
+    const url = `${this.url}/${id}`;
+    return this.http.delete<void>(url);
+  }
+
+  getLastId(): Observable<number> {
+    return this.http.get<ITask[]>(this.url).pipe(
+      map(tasks =>{
+        let higherId: number = 0;
+        for(let task of tasks){
+          if(task.id >= higherId){
+            higherId = task.id
+          }
+        }
+        return higherId;
+      }),
+      catchError(() => of(-1))
+    )
   }
 }

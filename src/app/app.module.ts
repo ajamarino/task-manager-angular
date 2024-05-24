@@ -22,7 +22,7 @@ import { TaskCardComponent } from './shared/components/task-card/task-card.compo
 import {MatCardModule} from '@angular/material/card';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormControl, FormsModule } from '@angular/forms';
@@ -67,6 +67,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+
   ],
   bootstrap: [AppComponent]
 })

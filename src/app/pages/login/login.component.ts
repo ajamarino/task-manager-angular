@@ -27,8 +27,8 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router){}
 
   login():void {
-    this.authService.login(this.email, this.password).subscribe(sucess => {
-      if(sucess) this.router.navigate(['/home/all-tasks'])
+    this.authService.login(this.email, this.password).subscribe(success => {
+      if(success) this.router.navigate(['/home/all-tasks'])
       return;
     })
 
@@ -38,13 +38,11 @@ export class LoginComponent {
   onEmailInputChange(value: string){
     this.email = value;
     this.error = "";
-    console.log(this.error)
   }
 
   onPasswordInputChange(value: string){
     this.password = value;
     this.error = ""
-    console.log(this.error)
   }
 
 

@@ -1,10 +1,11 @@
-import { Priority } from "../enums/Priority";
+import { Label } from "../enums/Label.enum";
+import { Priority } from "../enums/Priority.enum";
 
 export interface ITask{
-  id: Number,
+  id: number,
   description: string,
   limitDate:string,
   priority: Priority,
-  label:string,
+  label:Label,
   isActive:boolean
 }
