@@ -19,6 +19,11 @@ export class AllTasksComponent implements OnInit {
   constructor(private tasksService: TasksService){}
 
   ngOnInit(): void {
+    this.getAllTasks()
+
+  }
+
+  getAllTasks(){
     this.tasksService.getTasks().subscribe({
       next: (tasks) =>{
         this.tasks = tasks
@@ -27,7 +32,21 @@ export class AllTasksComponent implements OnInit {
         console.error('Error fetching tasks:', err);
       }
     })
+  }
 
+  receiveUptadedTask(event:ITask){
+    this.tasksService.updateTask(event).subscribe()
+    this.getAllTasks()
+  }
+
+  editTask(event:string){
+    this.tasksService.deleteTask(event).subscribe()
+    this.getAllTasks()
+  }
+
+  deleteTask(event:string){
+    this.tasksService.deleteTask(event).subscribe()
+    this.getAllTasks()
   }
 
 }

@@ -2,7 +2,7 @@ import { Label } from "../enums/Label.enum";
 import { Priority } from "../enums/Priority.enum";
 
 export interface ITask{
-  id: number,
+  id: string,
   description: string,
   limitDate:string,
   priority: Priority,

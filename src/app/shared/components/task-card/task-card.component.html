@@ -1,6 +1,6 @@
 <mat-card class="task-card">
   <div class="checkbox-task">
-    <mat-checkbox></mat-checkbox>
+    <mat-checkbox [(ngModel)]="task.isActive" color="primary" (click)="sendTask()"></mat-checkbox>
 
     <div class="card-content">
       <div class="f-row">
@@ -12,10 +12,10 @@
     </div>
   </div>
     <div>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <button (click)="emitEdit()" mat-icon-button aria-label="Pencil">
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <button (click)="emitDeletion()" mat-icon-button aria-label="Trash">
       <mat-icon>delete</mat-icon>
     </button>
   </div>

@@ -2,10 +2,10 @@
 
 <div *ngIf="tasks" >
   <div *ngFor="let task of tasks">
-    <app-task-card [task]="task"></app-task-card>
+    <app-task-card (editEmmiter)="editTask($event)" (deletionEmitter)="deleteTask($event)" (editTask)="receiveUptadedTask($event)" [task]="task"></app-task-card>
   </div>
 </div>
 
-<div *ngIf="tasks === []">
-  Não há tarefas criadas
+<div *ngIf="tasks != []">
+  <h1>Não há tarefas criadas</h1>
 </div>

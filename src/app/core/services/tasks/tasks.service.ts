@@ -25,7 +25,8 @@ export class TasksService {
     return this.http.put<ITask>(url, task);
   }
 
-  deleteTask(id: number): Observable<void> {
+  deleteTask(id: string): Observable<void> {
+    console.log(id)
     const url = `${this.url}/${id}`;
     return this.http.delete<void>(url);
   }
@@ -35,10 +36,11 @@ export class TasksService {
       map(tasks =>{
         let higherId: number = 0;
         for(let task of tasks){
-          if(task.id >= higherId){
-            higherId = task.id
+          if(Number(task.id) >= higherId){
+            higherId = Number(task.id)
           }
         }
+        console.log(higherId)
         return higherId;
       }),
       catchError(() => of(-1))

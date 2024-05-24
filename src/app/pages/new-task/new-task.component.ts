@@ -53,8 +53,9 @@ export class NewTaskComponent {
   createTask(){
     this.tasksService.getLastId().pipe(
       switchMap(lastId => {
+        let id = lastId + 1
         let taskPayload: ITask = {
-          id: lastId + 1,
+          id: id.toString(),
           description: this.description,
           limitDate: this.limitDate ? this.limitDate.toDateString() : "",
           priority: this.priority,
