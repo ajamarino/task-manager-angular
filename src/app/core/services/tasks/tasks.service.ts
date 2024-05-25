@@ -30,7 +30,6 @@ export class TasksService {
   }
 
   deleteTask(id: string): Observable<void> {
-    console.log(id)
     const url = `${this.url}/${id}`;
     return this.http.delete<void>(url);
   }
@@ -44,7 +43,6 @@ export class TasksService {
             higherId = Number(task.id)
           }
         }
-        console.log(higherId)
         return higherId;
       }),
       catchError(() => of(-1))

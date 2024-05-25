@@ -31,4 +31,17 @@ describe('TodoInputComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change input',() => {
+    spyOn(component.valueChange, 'emit');
+
+    const inputElement = fixture.debugElement.query(By.css('input')).nativeElement;
+
+    const testValue = 'test value';
+
+    inputElement.value = testValue;
+    inputElement.dispatchEvent(new Event('input'));
+
+    expect(component.valueChange.emit).toHaveBeenCalledWith(testValue);
+  })
 });

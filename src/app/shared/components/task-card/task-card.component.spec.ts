@@ -31,4 +31,36 @@ describe('TaskCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should send Task',() => {
+    spyOn(component.editTask, 'emit');
+
+    const testValue = component.task;
+
+    component.sendTask()
+
+    expect(component.editTask.emit).toHaveBeenCalledWith(testValue);
+  })
+
+  it('should emit Task edit',() => {
+    spyOn(component.editEmmiter, 'emit');
+
+    const testValue = component.task;
+
+    component.emitEdit()
+
+    expect(component.editEmmiter.emit).toHaveBeenCalledWith(testValue.id);
+  })
+
+  it('should emit Task deletion',() => {
+    spyOn(component.deletionEmitter, 'emit');
+
+    const testValue = component.task;
+
+    component.emitDeletion()
+
+    expect(component.deletionEmitter.emit).toHaveBeenCalledWith(testValue.id);
+  })
+
+
 });

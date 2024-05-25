@@ -78,4 +78,11 @@ describe('EditTaskComponent', () => {
 
     expect(tasksService.updateTask).toHaveBeenCalled();
   });
+
+  it('should change input value', () => {
+    component.onDescInputChange("teste")
+
+    expect(component.description).toEqual("teste")
+  })
+
 });

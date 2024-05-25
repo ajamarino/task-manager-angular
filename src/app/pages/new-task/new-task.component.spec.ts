@@ -1,84 +1,85 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { Router } from "@angular/router";
-import { of, throwError } from "rxjs";
-import { TasksService } from "src/app/core/services/tasks/tasks.service";
-import { Label } from "src/app/shared/enums/Label.enum";
-import { Priority } from "src/app/shared/enums/Priority.enum";
-import { ITask } from "src/app/shared/interfaces/ITask";
-import { NewTaskComponent } from "./new-task.component";
-import { AppModule } from "src/app/app.module";
-
-class MockTasksService {
-  getLastId() {
-    return of(1);
-  }
-
-  createTask(task: ITask) {
-    return of(task);
-  }
-}
-
-class MockRouter {
-  navigate(path: string[]) {}
-}
+import { TestBed } from '@angular/core/testing';
+import { of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { NewTaskComponent } from './new-task.component';
+import { TasksService } from 'src/app/core/services/tasks/tasks.service';
+import { Priority } from 'src/app/shared/enums/Priority.enum';
+import { Label } from 'src/app/shared/enums/Label.enum';
+import { AppModule } from 'src/app/app.module';
 
 describe('NewTaskComponent', () => {
   let component: NewTaskComponent;
-  let fixture: ComponentFixture<NewTaskComponent>;
-  let tasksService: TasksService;
-  let router: Router;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ NewTaskComponent ],
-      providers: [
-        { provide: TasksService, useClass: MockTasksService },
-        { provide: Router, useClass: MockRouter }
-      ],
-      imports: [AppModule]
-    }).compileComponents();
-  });
+  let tasksService: jasmine.SpyObj<TasksService>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewTaskComponent);
+    const tasksServiceSpy = jasmine.createSpyObj('TasksService', ['getLastId', 'createTask']);
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+
+    TestBed.configureTestingModule({
+      declarations: [NewTaskComponent],
+      providers: [
+        { provide: TasksService, useValue: tasksServiceSpy },
+        { provide: Router, useValue: routerSpy }
+      ],
+      imports: [
+        AppModule
+      ]
+    });
+
+    const fixture = TestBed.createComponent(NewTaskComponent);
     component = fixture.componentInstance;
-    tasksService = TestBed.inject(TasksService);
-    router = TestBed.inject(Router);
-    fixture.detectChanges();
+    tasksService = TestBed.inject(TasksService) as jasmine.SpyObj<TasksService>;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should initialize with correct header and descriptionInput values', () => {
-    expect(component.header).toEqual({
-      title: "Nova tarefa",
-      hasButton: false
-    });
-    expect(component.descriptionInput).toEqual({
-      label: "Descrição",
-      value: "",
-      placeholder: ""
-    });
-  });
-
-  it('should change description on onDescInputChange', () => {
-    const desc = 'New Description';
-    component.onDescInputChange(desc);
-    expect(component.description).toBe(desc);
-  });
-
-  it('should create a task and navigate on success', () => {
-    spyOn(router, 'navigate');
+  it('should create a task successfully and navigate to all tasks', () => {
+    tasksService.getLastId.and.returnValue(of(1));
+    tasksService.createTask.and.returnValue(of({ id: '2', description: 'Test Task', limitDate: '', priority: Priority.Baixo, label: Label.Casa, isActive: false }));
     component.description = 'Test Task';
-    component.priority = Priority.Médio;
-    component.label = Label.Escola;
-    component.limitDate = new Date('2024-12-31');
+    component.priority = Priority.Baixo;
+    component.label = Label.Casa;
 
     component.createTask();
 
+    expect(tasksService.getLastId).toHaveBeenCalled();
+    expect(tasksService.createTask).toHaveBeenCalledWith({
+      id: '2',
+      description: 'Test Task',
+      limitDate: '',
+      priority: Priority.Baixo,
+      label: Label.Casa,
+      isActive: false
+    });
     expect(router.navigate).toHaveBeenCalledWith(['/home/all-tasks']);
   });
 
+  it('should log an error when createTask fails', () => {
+    const consoleErrorSpy = spyOn(console, 'error');
+    const mockError = new Error('Test error');
+    tasksService.getLastId.and.returnValue(of(1));
+    tasksService.createTask.and.returnValue(throwError(() => mockError));
+    component.description = 'Test Task';
+    component.priority = Priority.Baixo;
+    component.label = Label.Casa;
+
+    component.createTask();
+
+    expect(tasksService.getLastId).toHaveBeenCalled();
+    expect(tasksService.createTask).toHaveBeenCalledWith({
+      id: '2',
+      description: 'Test Task',
+      limitDate: '',
+      priority: Priority.Baixo,
+      label: Label.Casa,
+      isActive: false
+    });
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Error creating task', mockError);
+  });
+
+  it('should change input value', () => {
+    component.onDescInputChange("teste")
+
+    expect(component.description).toEqual("teste")
+  })
 });

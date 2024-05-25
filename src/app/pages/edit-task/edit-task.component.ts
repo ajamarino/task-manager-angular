@@ -61,7 +61,6 @@ export class EditTaskComponent {
   }
 
   getTaskById(id: string | null) {
-    console.log("hi")
     this.tasksService.getTaskById(id).subscribe({
       next: task =>{
         this.descriptionInput.value = task[0].description;
